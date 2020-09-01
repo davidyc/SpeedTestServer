@@ -1,12 +1,29 @@
 import speedtest
 
+def initObject():
+    return speedtest.Speedtest()
 
-st = speedtest.Speedtest()
-#st.get_best_server()
-#st.download()
-st.upload()
+def getUploadKB():
+    st = initObject()
+    bytespersec = st.upload()
+    return bytespersec/1000
 
-res = st.results.dict()
-#print(res["download"], res["upload"], res["ping"])
-print(type(res["upload"]))
-print(res["upload"]/1024)
+def getDownloadKB():
+    st = initObject()
+    bytespersec = st.download()
+    return bytespersec/1000
+
+def getPing():
+    st = initObject()
+    bytespersec = st.get_best_server()
+    res = st.results.dict()
+    return res["ping"]
+
+def getFullReport():
+    st = initObject()
+    st.get_best_server()
+    st.download()
+    st.upload()
+    return st.results.dict()
+
+
