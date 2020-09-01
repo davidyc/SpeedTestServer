@@ -16,10 +16,10 @@ def createJSONResponse(typeReq, value, guid = None):
     if guid == None:
         guid = (str(uuid.uuid4()))
     time = getCurrentTimeSTR()
-    d["ID"] = guid
-    d["Time stamp"] = time
-    d["Type"] = typeReq
-    d["Value"] = value
+    d["key"] = guid
+    d["time"] = time
+    d["type"] = typeReq
+    d["value"] = value
     return d
 
 @app.route('/')
@@ -28,13 +28,23 @@ def info():
 
 @app.route('/ping', methods=['GET', 'POST'])
 def ping():
-    print(request.args)
     if request.method == 'POST':
+        req_body = request.get_json(silent=True)
+        if req_body == None:
+            key = None
+        else:
+            key = req_body['key']
         value = st.getPing()
-        dictData = createJSONResponse("Ping", value)
+        dictData = createJSONResponse("ping", value, key)
         return dictData
     data = dict()
     data['Data'] = "Data"
     return data
+
+@app.route('/ping/<key>', methods=['GET'])
+def pingByKey(key):
+    return key
+
+
 
 app.run()
