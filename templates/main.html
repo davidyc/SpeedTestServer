@@ -1,1 +1,65 @@
-<H1>Test</H1>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>API Documentation</h2>
+
+<table>
+  <tr>
+    <th>URL</th>
+    <th>Type</th>
+    <th>Parametrs</th>
+    <th>Description</th>
+    <th>Response</th>
+  </tr>
+  <tr>
+    <td>/ping</td>
+    <td>Get</td>
+    <td>No</td>
+    <td>Return all ping requests</td>
+    <td>{"key": par, "key2": par2}</td>
+  </tr>
+  <tr>
+    <td>/ping/key</td>
+    <td>Get</td>
+    <td>key(str)</td>
+    <td>Return all records with this key</td>
+    <td>{"key": par, "key2": par2}</td>
+  </tr>
+  <tr>
+    <td>/ping</td>
+    <td>Post</td>
+    <td>No</td>
+    <td>Check your ping and add to db with generated unikey key. You can use this key for search and add new data</td>
+    <td>{"key": "e562d2ce-a6d6-4dc1-a435-28f9f137e3ad","time": "01-September-2020 22:31:33","type": "ping","value": 37.134}</td>
+  </tr>
+  <tr>
+    <td>/ping</td>
+    <td>Post</td>
+    <td>{"key":"your key"}</td>
+    <td>Check your ping and add to db with your key. </td>
+    <td>{"key": "your key","time": "01-September-2020 22:31:33","type": "ping","value": 37.134}</td>
+  </tr>
+</table>
+
+</body>
+</html>
