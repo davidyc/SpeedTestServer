@@ -64,6 +64,25 @@ def dowmload():
 def dowmloadByKey(key):
     return db.getallrowbykey(dbname,"download", key)
 
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == 'POST':
+        req_body = request.get_json(silent=True)
+        if req_body == None:
+            key = (str(uuid.uuid4()))
+        else:
+            key = req_body['keyid']
+        time =getCurrentTimeSTR()
+        value = st.getDownloadKB()
+        db.addnewrow(dbname, key, time, "upload", value)
+        dictData = createJSONResponse(key, time, "upload", value)
+        return dictData
+    return db.getallrowbytype(dbname,"upload")
+
+@app.route('/upload/<key>', methods=['GET'])
+def uploadByKey(key):
+    return db.getallrowbykey(dbname,"upload", key)
+
 
 db.initTable(dbname)
 app.run()

@@ -105,7 +105,7 @@ tr:nth-child(even) {
   </tr>
 </table>
 
-
+<br>
 <h3>Receiving data about download speed</h3>
 <table>
   <tr>
@@ -188,6 +188,94 @@ tr:nth-child(even) {
     "dateandtime": "02-September-2020 14:27:11",
     "keyid": "your key",
     "typetest": "download",
+    "valuetest": 1440.674226432435
+}</td>
+  </tr>
+</table>
+
+<br>
+<h3>Receiving data about upload speed</h3>
+<table>
+  <tr>
+    <th>URL</th>
+    <th>Type</th>
+    <th>Parametrs</th>
+    <th>Description</th>
+    <th>Response</th>
+  </tr>
+  <tr>
+    <td>/upload</td>
+    <td>Get</td>
+    <td>No</td>
+    <td>Return all upload requests</td>
+    <td> [
+          {
+          "dateandtime": "02-September-2020 14:06:47",
+          "keyid": "db1e192e-b83b-4d5f-9629-b65dbfd3e36c",
+          "typetest": "upload",
+          "valuetest": "3453.242000784555"
+          },
+          {
+          "dateandtime": "02-September-2020 14:11:09",
+          "keyid": "db1e192e-b83b-4d5f-ffff-b65dbfd3e36c",
+          "typetest": "upload",
+          "valuetest": "5208.562200260381"
+          },
+          {
+          "dateandtime": "02-September-2020 14:11:44",
+          "keyid": "db1e192e-ffff-4d5f-9629-b65dbfd3e36c",
+          "typetest": "upload",
+          "valuetest": "623.4849016355331"
+          }]
+</td>
+  </tr>
+  <tr>
+    <td>/upload/key</td>
+    <td>Get</td>
+    <td>key(str)</td>
+    <td>Return all records with this key</td>
+    <td>[
+          {
+          "dateandtime": "02-September-2020 14:06:47",
+          "keyid": "db1e192e-b83b-4d5f-9629-b65dbfd3e36c",
+          "typetest": "upload",
+          "valuetest": "3453.242000784555"
+          },
+          {
+          "dateandtime": "02-September-2020 14:11:09",
+          "keyid": "db1e192e-b83b-4d5f-9629-b65dbfd3e36c",
+          "typetest": "upload",
+          "valuetest": "5208.562200260381"
+          },
+          {
+          "dateandtime": "02-September-2020 14:11:44",
+          "keyid": "db1e192e-b83b-4d5f-9629-b65dbfd3e36c",
+          "typetest": "upload",
+          "valuetest": "623.4849016355331"
+          }]
+    </td>
+  </tr>
+  <tr>
+    <td>/upload</td>
+    <td>Post</td>
+    <td>No</td>
+    <td>Check your upload and add to db with generated unikey key. You can use this key for search and add new data</td>
+    <td>{
+      "dateandtime": "02-September-2020 14:27:11",
+      "keyid": "2132bad5-6f6e-4b57-8bf2-9a1b029594d3",
+      "typetest": "upload",
+      "valuetest": 1440.674226432435
+    }</td>
+  </tr>
+  <tr>
+    <td>/ping</td>
+    <td>Post</td>
+    <td>{"keyid":"your key"}</td>
+    <td>Check your ping and add to db with your key. </td>
+    <td>{
+    "dateandtime": "02-September-2020 14:27:11",
+    "keyid": "your key",
+    "typetest": "upload",
     "valuetest": 1440.674226432435
 }</td>
   </tr>
