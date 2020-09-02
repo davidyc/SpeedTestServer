@@ -1,2 +1,4 @@
 speedtest-cli
 flask
+mariadb
+json
