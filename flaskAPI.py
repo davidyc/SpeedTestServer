@@ -4,8 +4,10 @@ from flask import request
 from datetime import datetime
 import uuid
 import speedtestserviece as st
+import dcconnection as db
 
 app = Flask("Speed Test Server")
+dbname = "SpeedTest"
 
 def getCurrentTimeSTR():
     now = datetime.now()
@@ -37,14 +39,12 @@ def ping():
         value = st.getPing()
         dictData = createJSONResponse("ping", value, key)
         return dictData
-    data = dict()
-    data['Data'] = "Data"
-    return data
+    return db.getallrowbytype(dbname,"ping")
 
 @app.route('/ping/<key>', methods=['GET'])
 def pingByKey(key):
-    return key
+    return db.getallrowbykey(dbname,"ping", key)
 
 
-
+db.initTable(dbname)
 app.run()
