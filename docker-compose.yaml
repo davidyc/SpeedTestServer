@@ -1,15 +1,14 @@
 version: '3.1'
-
 services:
-
   adminer:
     image: adminer
+    container_name: ts_adminer
     restart: always
     ports:
       - 8081:8080
-
   db:
     image: mariadb
+    container_name: ts_mariadb
     restart: always
     hostname: db
     ports:
@@ -17,11 +16,13 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: TestSpeedFlask
-
-  web:
-    image:  flastestspeed
+  server:
+    build: ./server
+    container_name: ts_server
     links:
       - db
     restart: always
+    depends_on:
+      - db
     ports:
       - 5001:5000
