@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main form</title>
+</head>
+<body>
+    {% if message %}
+        <h1>{{ message }}</h1>
+    {% endif %}
+    <form action="" method="post">
+        <p>
+			<label for="count">Count test :</label>
+			<input type="number" value=1 name="number">
+		</p>
+		<p>
+			<label for="interval">Interval (min): </label>
+			<input type="number" value=0  name="interval">
+		</p>
+		<p>
+			<input  type="submit" type="Add">
+		</p>
+    </form>
+</body>
+</html>
