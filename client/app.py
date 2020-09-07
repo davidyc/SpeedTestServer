@@ -19,7 +19,7 @@ def setserver():
             count = 1
         if interval == None or int(interval) < 1:
             interval = 0
-        ai.execute(count,interval*60, url, typereq, keyid)
+        ai.execute(count,int(interval)*60, url, typereq, keyid)
         return render_template('result.html', message=infomess.format(interval, count))
     return render_template('main.html', message=message)
 
