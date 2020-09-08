@@ -16,6 +16,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: TestSpeedFlask
+    volumes:
+      - my-datavolume:/var/lib/mysql
   server:
     build: ./server
     container_name: ts_server
@@ -32,3 +34,9 @@ services:
     restart: always
     ports:
       - 5002:5000
+    links:
+      - server
+    depends_on:
+      - server
+volumes:
+  my-datavolume:
