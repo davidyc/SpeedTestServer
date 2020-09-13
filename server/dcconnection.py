@@ -2,7 +2,7 @@ import mariadb
 import json
 
 config = {
-    'host': 'db',
+    'host': '80.249.146.55',
     'port': 3306,
     'user': 'root',
     'password': 'password',
